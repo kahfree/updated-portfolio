@@ -24,3 +24,71 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Typewriter effect 1 */
+@keyframes typing {
+  0.0000%, 51.2791% { content: ""; }
+  1.1395%, 50.1395% { content: "W"; }
+  2.2791%, 49.0000% { content: "We"; }
+  3.4186%, 47.8605% { content: "Wel"; }
+  4.5581%, 46.7209% { content: "Welc"; }
+  5.6977%, 45.5814% { content: "Welco"; }
+  6.8372%, 44.4419% { content: "Welcom"; }
+  7.9767%, 43.3024% { content: "Welcome"; }
+
+  54.6977%, 96.8605% { content: ""; }
+  55.8372%, 95.7209% { content: "F"; }
+  56.9767%, 94.5814% { content: "Fá"; }
+  58.1163%, 93.4419% { content: "Fái"; }
+  59.2558%, 92.3023% { content: "Fáil"; }
+  60.3953%, 91.1628% { content: "Fáilt"; }
+  61.5349%, 90.0233% { content: "Fáilte"; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typewriter {
+  --caret: currentcolor;
+}
+
+.typewriter::before {
+  content: "";
+  animation: typing 13.5s infinite;
+}
+
+.typewriter::after {
+  content: "";
+  border-right: 1px solid var(--caret);
+  animation: blink 0.5s linear infinite;
+}
+
+.typewriter.thick::after {
+  border-right: 1ch solid var(--caret);
+}
+
+.typewriter.nocaret::after {
+  border-right: 0;
+}
+
+
+@media (prefers-reduced-motion) {
+  .typewriter::after {
+    animation: none;
+  }
+  
+  @keyframes sequencePopup {
+    0%, 100% { content: "Welcome"; }
+    50% { content: "Fáilte"; }
+  }
+
+  .typewriter::before {
+    content: "Welcome";
+    animation: sequencePopup 12s linear infinite;
+  }
+}
+
+/**/
+

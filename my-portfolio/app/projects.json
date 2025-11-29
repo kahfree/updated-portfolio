@@ -1,0 +1,36 @@
+{
+    "projects": [
+    {
+      "title": "Planning Poker",  
+      "description": "A lightweight point estimation tool for agile workflows. Supports multiple rooms, link sharing, and realtime user updates.",
+      "link": "https://github.com/bober-mateusz/Planning-Poker",
+      "tags": [
+        "React",
+        "WebSockets",
+        "Spring Boot"
+      ]
+    },
+     {
+      "title": "Donedeal Scraper",  
+      "description": "Web scraper to extract car listings that watches prices & trends to determine find the best deals, summarised in an email",
+      "link": "https://github.com/kahfree/donedeal-scraper",
+      "tags": [
+        "Python",
+        "Pandas",
+        "Data Analysis"
+      ]
+    },
+    {
+      "title": "Pettopia",  
+      "description": "API for fictional vet business to manager customer and pet services, including invoice generation.",
+      "link": "https://github.com/kahfree/pettopia",
+      "tags": [
+        "Spring Boot",
+        "REST",
+        "Task Scheduling",
+        "Caching",
+        "3rd-party api integration"
+      ]
+    }
+]
+}
