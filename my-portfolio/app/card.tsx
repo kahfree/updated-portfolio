@@ -10,7 +10,7 @@ interface ICardProps {
 export default function Card(props: ICardProps) {
     const { title, description, link, tags } = props
     return (
-        <div className="flex flex-col h-full rounded-3xl overflow-hidden drop-shadow-lg/20 p-3 lg:text-center bg-[#eee8d8]">
+        <div className="flex flex-col h-full rounded-3xl overflow-hidden drop-shadow-lg/20 p-3 lg:text-center bg-[#eee8d8] border-1 border-stone-800">
             <div className="flex-grow">
                 <div className="px-6 py-4">
                     <div className="font-bold text-2xl mb-2 text-black">{title}</div>
@@ -22,9 +22,8 @@ export default function Card(props: ICardProps) {
                     {tags.map(tag => <span className="inline-block bg-amber-400 rounded-full px-3 py-1 text-sm font-semibold text-stone-800 mr-2 mb-2 glow">#{tag}</span>)}
                 </div>
             </div>
-            <hr />
-            <div className="p-4 flex justify-start lg:justify-center">
-                <a href={link} target="_blank"><DiGithubBadge className="fill-stone-800 scale-200" /></a>
+            <div className="p-4 flex justify-center">
+                <a href={link} target="_blank"><DiGithubBadge className="fill-stone-800 scale-300 transition ease-in-out hover:scale-350 hover:fill-stone-700" /></a>
             </div>
         </div>
     )
