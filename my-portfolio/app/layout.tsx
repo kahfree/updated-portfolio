@@ -21,6 +21,7 @@ const hostGrotesk = Host_Grotesk({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://caffrey.dev"),
   title: "caffrey.dev",
   description: "Ethan's portfolio website",
   openGraph: {
@@ -52,9 +53,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="stylesheet" href="./styles.css"></link>
-      </head>
+
       <body
         className={`${hostGrotesk.className}`}
       >

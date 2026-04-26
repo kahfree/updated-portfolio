@@ -10,7 +10,7 @@ export default function Home() {
         <div className="">
           <Image src="/transition-background.svg" alt="" width={2560} height={1024} className="w-full h-auto" />
         </div>
-        <div style={{"backgroundColor": "#ebe2cf"}} className="w-full h-full text-center pb-6">
+        <div id="my-work" style={{"backgroundColor": "#ebe2cf"}} className="w-full h-full text-center pb-6">
           <div className="sm:w-[85%] lg:w-[60%] mx-auto">
             <div className="text-5xl text-black font-semibold pt-6 transition delay-150 duration-300 ease-in gradient-heading">My Work</div>
             <ProjectsGrid />

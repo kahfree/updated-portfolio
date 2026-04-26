@@ -3,6 +3,13 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useCallback } from "react";
 
+function scrollToWork(e: React.MouseEvent) {
+  e.preventDefault();
+  const el = document.getElementById("my-work");
+  if (!el) return;
+  window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: "smooth" });
+}
+
 export default function Hero() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -61,22 +68,28 @@ export default function Hero() {
       </motion.p>
 
       <motion.div
-        className="animate-bounce text-zinc-400 relative"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.6 }}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="28"
-          height="28"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth="2"
+        <a
+          href="#my-work"
+          onClick={scrollToWork}
+          className="animate-bounce text-zinc-400 relative cursor-pointer hover:text-zinc-200 transition-colors duration-200 block p-4"
+          aria-label="Scroll to My Work"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-        </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </a>
       </motion.div>
 
       {/* TRANSITION SVG 
