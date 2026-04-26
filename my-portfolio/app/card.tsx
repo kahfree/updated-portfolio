@@ -16,10 +16,8 @@ export default function Card(props: ICardProps) {
         <div className="h-full hover:-translate-y-1.5 hover:shadow-xl transition-[transform,box-shadow] duration-150 rounded-3xl" style={{ willChange: "transform" }}>
         <motion.div
             className="flex flex-col h-full rounded-3xl overflow-hidden lg:text-center bg-[#f5f0e8] border border-stone-300"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: index * 0.15, ease: "easeOut" }}
+            variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
         >
             <div className="h-1 bg-emerald-600 w-full" />
             <div className="flex-grow px-6 pt-5 pb-2">
