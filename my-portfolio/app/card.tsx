@@ -7,13 +7,19 @@ interface ICardProps {
     description: string,
     link: string,
     tags: string[],
-    index: number
 }
 
 export default function Card(props: ICardProps) {
-    const { title, description, link, tags, index } = props
+    const { title, description, link, tags } = props
     return (
         <div className="h-full hover:-translate-y-1.5 hover:shadow-xl transition-[transform,box-shadow] duration-150 rounded-3xl" style={{ willChange: "transform" }}>
+        {/*
+          variants: a named map of animation states { hidden: {...}, visible: {...} }.
+          Instead of inline initial/animate values, you name states and reference them
+          by string. The parent ProjectsGrid sets initial="hidden" whileInView="visible",
+          and FM propagates those state names down to all children that have matching
+          variants — so this card animates in sync with its siblings automatically.
+        */}
         <motion.div
             className="flex flex-col h-full rounded-3xl overflow-hidden lg:text-center bg-[#f5f0e8] border border-stone-300"
             variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } }}
@@ -26,7 +32,12 @@ export default function Card(props: ICardProps) {
                 <div className="border-t border-stone-200 my-4" />
                 <div>
                     {tags.map(tag => (
-                        <span key={tag} className="inline-block bg-amber-400 rounded-full px-3 py-1 text-sm font-semibold text-stone-800 mr-2 mb-2">#{tag}</span>
+                        <span
+                            key={tag}
+                            className="inline-block bg-amber-400/10 border border-amber-400/50 text-amber-700 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2 hover:bg-amber-400/20 hover:border-amber-400 hover:shadow-[0_0_10px_rgba(245,158,11,0.45)] transition-all duration-200"
+                        >
+                            #{tag}
+                        </span>
                     ))}
                 </div>
             </div>

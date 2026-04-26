@@ -1,24 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Tinos, Host_Grotesk } from "next/font/google";
+import { Host_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const tinosSans = Tinos({
-  weight: "700"
-})
-
-const hostGrotesk = Host_Grotesk({
-
-})
+const hostGrotesk = Host_Grotesk({})
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://caffrey.dev"),
@@ -53,10 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-
-      <body
-        className={`${hostGrotesk.className}`}
-      >
+      <body className={hostGrotesk.className}>
         {children}
       </body>
     </html>
