@@ -11,13 +11,14 @@
       ]
     },
      {
-      "title": "Donedeal Scraper",  
-      "description": "Web scraper to extract car listings that watches prices & trends to determine find the best deals, summarised in an email",
-      "link": "https://github.com/kahfree/donedeal-scraper",
+      "title": "Liked Song Memories",
+      "description": "On-this-day memories for Spotify liked songs. Shows tracks you favorited on today's date across past years, with album art rendered in a terminal UI.",
+      "link": "https://github.com/kahfree/liked-song-memories",
       "tags": [
-        "Python",
-        "Pandas",
-        "Data Analysis"
+        "C",
+        "Spotify API",
+        "OAuth2.0",
+        "TUI"
       ]
     },
     {

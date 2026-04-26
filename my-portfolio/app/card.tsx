@@ -1,30 +1,44 @@
+"use client"
+import { motion } from "framer-motion"
 import { DiGithubBadge } from "react-icons/di";
 
 interface ICardProps {
     title: string,
     description: string,
     link: string,
-    tags: string[]
+    tags: string[],
+    index: number
 }
 
 export default function Card(props: ICardProps) {
-    const { title, description, link, tags } = props
+    const { title, description, link, tags, index } = props
     return (
-        <div className="flex flex-col h-full rounded-3xl overflow-hidden drop-shadow-lg/20 p-3 lg:text-center bg-[#eee8d8] border-1 border-stone-800">
-            <div className="flex-grow">
-                <div className="px-6 py-4">
-                    <div className="font-bold text-2xl mb-2 text-black">{title}</div>
-                    <p className="text-stone-900 text-base">
-                        {description}
-                    </p>
-                </div>
-                <div className="px-6 pt-4 pb-2">
-                    {tags.map(tag => <span className="inline-block bg-amber-400 rounded-full px-3 py-1 text-sm font-semibold text-stone-800 mr-2 mb-2 glow">#{tag}</span>)}
+        <div className="h-full hover:-translate-y-1.5 hover:shadow-xl transition-[transform,box-shadow] duration-150 rounded-3xl" style={{ willChange: "transform" }}>
+        <motion.div
+            className="flex flex-col h-full rounded-3xl overflow-hidden lg:text-center bg-[#f5f0e8] border border-stone-300"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: index * 0.15, ease: "easeOut" }}
+        >
+            <div className="h-1 bg-emerald-600 w-full" />
+            <div className="flex-grow px-6 pt-5 pb-2">
+                <div className="font-bold text-2xl mb-2 text-black">{title}</div>
+                <p className="text-stone-600 text-base leading-relaxed">{description}</p>
+                <div className="border-t border-stone-200 my-4" />
+                <div>
+                    {tags.map(tag => (
+                        <span key={tag} className="inline-block bg-amber-400 rounded-full px-3 py-1 text-sm font-semibold text-stone-800 mr-2 mb-2">#{tag}</span>
+                    ))}
                 </div>
             </div>
-            <div className="p-4 flex justify-center">
-                <a href={link} target="_blank"><DiGithubBadge className="fill-stone-800 scale-300 transition ease-in-out hover:scale-350 hover:fill-stone-700" /></a>
+            <div className="px-6 pb-5 pt-2 flex justify-center">
+                <a href={link} target="_blank" rel="noopener noreferrer" className="btn-shimmer flex items-center gap-2 px-4 py-2 rounded-full bg-stone-800 text-white text-sm font-semibold hover:bg-stone-700 transition-colors duration-200">
+                    <DiGithubBadge className="text-xl" />
+                    View on GitHub
+                </a>
             </div>
+        </motion.div>
         </div>
     )
 }
