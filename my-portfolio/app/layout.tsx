@@ -6,28 +6,33 @@ const hostGrotesk = Host_Grotesk({})
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://caffrey.dev"),
-  title: "caffrey.dev",
-  description: "Ethan's portfolio website",
+  title: "Ethan Caffrey | Fullstack Engineer",
+  description: "Ethan Caffrey — fullstack engineer building fast, polished web products with React, Spring Boot, and more.",
   openGraph: {
-    title: "caffrey.dev",
-    description: "Ethan's portfolio website",
+    title: "Ethan Caffrey | Fullstack Engineer",
+    description: "Ethan Caffrey — fullstack engineer building fast, polished web products with React, Spring Boot, and more.",
     url: "https://caffrey.dev",
     type: "website",
-    images: [
-      {
-        url: "/favicon.ico",
-        width: 256,
-        height: 256,
-        alt: "Portfolio Favicon",
-      }
-    ],
+    siteName: "Ethan Caffrey",
   },
   twitter: {
     card: "summary_large_image",
-    title: "caffrey.dev",
-    description: "Ethan's portfolio website",
-    images: ["/og-image.png"],
+    title: "Ethan Caffrey | Fullstack Engineer",
+    description: "Ethan Caffrey — fullstack engineer building fast, polished web products with React, Spring Boot, and more.",
   },
+  alternates: {
+    canonical: "https://caffrey.dev",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Ethan Caffrey",
+  url: "https://caffrey.dev",
+  email: "ethancaff@gmail.com",
+  sameAs: ["https://github.com/kahfree"],
+  jobTitle: "Fullstack Engineer",
 };
 
 export default function RootLayout({
@@ -38,6 +43,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={hostGrotesk.className}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
       </body>
     </html>

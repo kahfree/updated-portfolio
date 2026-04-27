@@ -122,7 +122,8 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: HEADING_ENTRANCE_DURATION, ease: "easeOut" }}
       >
-        <span className="typewriter nocaret"></span>&nbsp;
+        <span className="sr-only">Ethan Caffrey</span>
+        <span aria-hidden="true" className="typewriter nocaret"></span>&nbsp;
       </motion.h1>
 
       <motion.p
