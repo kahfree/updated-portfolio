@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useSpring, animate } from "motion/react";
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import {
   ORB_FLEE_RADIUS,
   ORB_FLEE_MIN_DISTANCE,
@@ -36,14 +36,8 @@ function scrollToWork(e: React.MouseEvent) {
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
 
-  // Lazy initializer runs once on mount — "use client" guarantees window exists here.
-  // Seeding rawX/rawY at the random position means useSpring starts tracking from
-  // there, so dotX/dotY never animate from 0 (top-left).
-  const [initX] = useState(() => ORB_EDGE_PADDING + Math.random() * (window.innerWidth - ORB_EDGE_PADDING * 2));
-  const [initY] = useState(() => ORB_EDGE_PADDING + Math.random() * (window.innerHeight * ORB_HERO_HEIGHT_FALLBACK_FRACTION - ORB_EDGE_PADDING * 2));
-
-  const rawX = useMotionValue(initX);
-  const rawY = useMotionValue(initY);
+  const rawX = useMotionValue(0);
+  const rawY = useMotionValue(0);
 
   const dotX = useSpring(rawX, { stiffness: ORB_SPRING_STIFFNESS, damping: ORB_SPRING_DAMPING });
   const dotY = useSpring(rawY, { stiffness: ORB_SPRING_STIFFNESS, damping: ORB_SPRING_DAMPING });
@@ -64,6 +58,12 @@ export default function Hero() {
     rawX.set(x);
     rawY.set(y);
   }, [rawX, rawY]);
+
+  useEffect(() => {
+    rawX.set(ORB_EDGE_PADDING + Math.random() * (window.innerWidth - ORB_EDGE_PADDING * 2));
+    rawY.set(ORB_EDGE_PADDING + Math.random() * (window.innerHeight * ORB_HERO_HEIGHT_FALLBACK_FRACTION - ORB_EDGE_PADDING * 2));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const id = setInterval(() => {
